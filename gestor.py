@@ -40,3 +40,12 @@ if __name__ == "__main__":
     for t in listar_tareas():
         estado = "✓" if t["completada"] else "○"
         print(f"{estado} [{t['id']}] {t['descripcion']}")
+def eliminar_tarea(id_tarea):
+    """Elimina una tarea de la lista"""
+    global tareas
+    tareas = [t for t in tareas if t["id"] != id_tarea]
+    return True
+
+def contar_pendientes():
+    """Retorna la cantidad de tareas no completadas"""
+    return len([t for t in tareas if not t["completada"]])
